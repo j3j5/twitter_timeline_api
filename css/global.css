@@ -1,1 +1,77 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+
+html, body {
+	height: 100%;
+	margin: 15px;
+	background: #FDFDFD;
+	font: 10px/13px 'Open Sans',sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+}
+
+.header {
+	text-align: center;
+	overflow: hidden;
+	margin: auto;
+}
+
+.wrap {
+	overflow: hidden;
+	text-align: center;
+	margin: 30px;
+}
+
+.wrap_center {
+	overflow: hidden;
+	width: 82%;
+	margin: auto;
+	margin-bottom: 30px;
+}
+
+h1 {
+	font-size: 10em;
+	color: #0F0F0F;
+	font-weight: lighter;
+	margin: auto;
+}
+
+#titleSource {
+	font-size: 1em;
+	position: relative;
+	top: -5px;
+	margin-left: -12px;
+}
+
+
+h1 i {
+	font-size: 2.5em;
+	position: relative;
+	top: 61px;
+	margin-left: -55px;
+	margin-right: -55px;
+	font-style: normal;
+}
+
+
+
+/* SAFE FOR WORK MODE  */
+
+.safe-boobs {
+	display: block;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: url(http://placekitten.com/g/500/500) no-repeat;
+	background-size: 100% 100%;
+}
+
+.newBox:hover .safe-boobs, .box:hover .safe-boobs {
+	z-index: -100;
+	display: none;
+}
+
+
+

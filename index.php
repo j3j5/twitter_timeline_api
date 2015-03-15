@@ -2,6 +2,15 @@
 
 ob_start();
 
+/**
+ * Initialize some variables
+ */
+$view_data = array();
+$title = '';
+$description = '';
+$css_files = array('header' => array(), 'footer' => array());
+$js_files = array('header' => array(), 'footer' => array());
+
 include('config.php');
 
 include('routing.php');
@@ -23,6 +32,7 @@ if(!is_file(__DIR__ . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "$vi
 
 include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."header.php");
 
+extract($view_data);
 include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."$view.php");
 
 include(__DIR__ . DIRECTORY_SEPARATOR ."views" . DIRECTORY_SEPARATOR ."footer.php");

@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+h1 {
+	margin-bottom: 50px !important;
+}
+
+#container3 {
+	float:left;
+	width:100%;
+	background: none;
+	overflow:hidden;
+	position:relative;
+}
+
+#container2 {
+	float:left;
+	width:100%;
+	background: none;
+	position:relative;
+	right:30%;
+}
+
+#container1 {
+	float:left;
+	width:100%;
+	background: none;
+	position:relative;
+	right:40%;
+}
+
+#col1 {
+	float:left;
+	width:26%;
+	position:relative;
+	left:72%;
+	overflow:hidden;
+}
+
+#col2 {
+	float:left;
+	width:36%;
+	position:relative;
+	left:76%;
+	overflow:hidden;
+}
+
+#col3 {
+	float:left;
+	width:26%;
+	position:relative;
+	left:80%;
+	overflow:hidden;
+}
+
+.colTitles {
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 6em;
+}
+
+.colTitles a {
+	color: black;
+}
+
+.search {
+	display: inline-block;
+}
+
+.box {
+	position: relative;
+	margin: 10px 10px 10px 10px;
+}
+
+.colImg {
+	width: 100%;
+	margin: 15px 0px 15px 0px;
+	border-radius: 4px;
+	box-shadow: 2px 2px 2px #D1D1D1;
+}
+
+#title1 {
+	margin-left:12.5%;
+}
+
+#title3 {
+	margin-right:12.5%;
+}
+
+.titleCol1 {
+	float:left;
+}
+
+.titleCol3 {
+	float:right;
+}
+
+#search1 {
+	margin-left: 7.5%;
+}
+
+#search3 {
+	margin-right: 7.5%;
+}
+
+.search input[type=text] {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-align: center;
+	text-shadow: rgba(0,0,0,.1) 0 0 2px;
+	padding: 4%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+#tumblrSearch {
+
+}
+
+#twitterSearch {
+
+}
