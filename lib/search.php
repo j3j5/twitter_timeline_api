@@ -5,9 +5,11 @@ use \j3j5\TwitterApio;
 class Search {
 
 	private $max_items;
+	private $settings;
 
-	public function __construct() {
+	public function __construct($settings = array()) {
 		$this->max_items = 50;
+		$this->settings = $settings;
 	}
 
 	public function get_max_items() {
@@ -16,6 +18,14 @@ class Search {
 
 	public function set_max_items($max_items) {
 		$this->max_items = $max_items;
+	}
+
+	public function get_settings() {
+		return $this->settings;
+	}
+
+	public function set_settings($settings) {
+		$this->settings = $settings;
 	}
 
 	/**		TWITTER		**/
@@ -30,13 +40,7 @@ class Search {
 	 * @return String
 	 */
 	public function twitter($query, $count = FALSE) {
-		// YAStickers token with Boooobs.in api
-		$tokens = array(
-			'consumer_key'		=> 'DMbcVoRTj4oVQYUGf5T7Ks7Fp',
-			'consumer_secret'	=> 'fj5DYOKR1OWNf5ZIdIQpTNbtJYYb6b5SxacqH82zLCjxrjD4Pc',
-			'token' 			=> '445461666-Tobj5JRgRBzJ4QNJhHyfFPZtf3Nuwya8agfimTpF',
-			'secret'			=> '1iBAsJTTSfzWwE8XV0VPJfs8rEuXQFVzsjHv4tp17xVNf'
-		);
+
 		$query = 'boobs ' . $query . ' filter:images -RT';
 		if(!is_numeric($count)) {
 			$count = $this->max_items;
@@ -47,7 +51,8 @@ class Search {
 			'count' => $count + 5,
 			'include_entities' => '1',
 		);
-		$api = new TwitterApio($tokens, array('json_decode' => 'object'));
+
+		$api = new TwitterApio($this->settings['twitter'], array('json_decode' => 'object'));
 		$tweets = array();
 		foreach($api->get_timeline('/search/tweets', $options) AS $page) {
 			if(is_array($page) && !empty($page)) {
@@ -266,12 +271,10 @@ class Search {
 	/**		TUMBLR		**/
 
 	public function tumblr($tag = "tetas") {
-		$api_key = "IRCH87ahPw5ZamQtW72G7F1oA0QO0xTQPKVdvd1TGkDScQW0bs";
 		if(empty($tag)) {
-			$tag = 'tetas';
+			$tag = 'pechos';
 		}
-		$base_url = "http://api.tumblr.com/v2/tagged?tag=$tag&api_key=$api_key";
-
+		$base_url = "http://api.tumblr.com/v2/tagged?tag=$tag&api_key={$this->settings['tumblr']['api_key']}";
 		$data = $this->do_curl_call($base_url);
 		return $this->extract_tumblr_urls($data);
 	}
@@ -280,7 +283,7 @@ class Search {
 		$images = $urls = $usernames = array();
 		$json = json_decode($response, TRUE);
 		$amount = 0;
-		if(isset($json['response']) && !empty($json['response'])) {
+		if(isset($json['response']) && is_array($json['response'])) {
 			foreach($json['response'] AS $post) {
 				if(!isset($post['photos'])) {
 					continue;
@@ -305,7 +308,7 @@ class Search {
 
 	/**		FFFFOUND		**/
 
-	public function on_ffffound($user) {
+	public function ffffound($user) {
 		$url = "http://ffffound.com/home/$user/found/feed";
 		$xml = $this->do_curl_call($url);
 		return $this->extract_ffffound_urls($xml);
@@ -352,7 +355,7 @@ class Search {
 
 	private function _search_on_instagram($query) {
 		$query = 'snow' . $query;
-		$url = "https://api.instagram.com/v1/tags/$query/media/recent?access_token=1411766014.f59def8.e27408fec8cb4fefafd10b90439b3782";
+		$url = "https://api.instagram.com/v1/tags/$query/media/recent?access_token=" . $this->settings['instagram']['access_token'];
 		$json = $this->do_curl_call($url);
 		return $this->_extract_instagram_urls($json);
 	}
@@ -383,5 +386,5 @@ class Search {
 	}
 }
 
-/* End of file Search.php */
-/* Location: ./application/libraries/Search.php */
+/* End of file search.php */
+/* Location: ./lib/search.php */
