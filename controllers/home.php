@@ -13,6 +13,7 @@ $view = 'landing';
 
 $search = new Search();
 $search->set_max_items(5);
+$search->set_settings(array('twitter' => $twitter_settings, 'tumblr' => $tumblr_api_key));
 $search_twitter = $search->twitter('');
 $search_reddit = $search->reddit('', 'boobs');
 $search_tumblr = $search->tumblr();
