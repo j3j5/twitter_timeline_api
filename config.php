@@ -24,6 +24,11 @@ $twitter_settings = array(
 	'secret'                     => 'YOUR_SECRET',
 );
 
+
+$tumblr_api_key = array("api_key" => "YOUR_API_KEY");
+
+$instagram = array('access_token' => 'YOUR_ACCESS_TOKEN');
+
 $sfw = FALSE;
 if(mb_strpos($_SERVER['HTTP_HOST'], 'sfw') !== FALSE) {
 	$sfw = TRUE;
