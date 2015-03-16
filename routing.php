@@ -22,10 +22,10 @@ if(PHP_SAPI == 'cli') {
 	$controller = "cli" . DIRECTORY_SEPARATOR ."$controller.php";
 // WEBSERVER
 } else {
-	// The url is as follows http://yourserver.com/controller/username
+	// The url is as follows http://yourserver.com/controller/query
 	$url_structure = array(
 		'controller',
-		'username'
+		'query'
 	);
 
 	$uri_segments = FALSE;
